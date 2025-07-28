@@ -21,9 +21,19 @@ class Program
         };
 
         int userX = 1, userY = 1;
+        char[] bag = new char[1];
 
         while (true)
         {
+            //bag logic
+            Console.SetCursorPosition(0, 11);
+            Console.Write("Bag: ");
+            for (int i = 0; i < bag.Length; i++)
+            {
+                Console.Write(bag[i]+" ");
+            }
+            
+            //map creation
             Console.SetCursorPosition(0, 0);
             for (int i = 0; i < map.GetLength(0); i++)
             {
@@ -65,6 +75,19 @@ class Program
                         userY++;
                     }
                     break;
+            }
+
+            if (map[userX,userY] == 'x')
+            {
+                map[userX,userY] = ' ';
+                
+                char[] tempBag = new char[bag.Length+1];
+                for (int i = 0; i < bag.Length; i++)
+                {
+                    tempBag[i] = bag[i];
+                }
+                tempBag[tempBag.Length - 1] = 'x';
+                bag = tempBag;
             }
             
             Console.Clear();
