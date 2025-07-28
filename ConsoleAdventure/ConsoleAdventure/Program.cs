@@ -4,7 +4,7 @@ class Program
 {
     public static void Main(string[] args)
     {
-        bool gameIsOn = true;
+        Console.CursorVisible = false;
         char[,] map =
         {
             // 1    2    3    4    5    6    7    8    9    10
@@ -19,19 +19,55 @@ class Program
             { '#', ' ', ' ', ' ', ' ', ' ', '#', ' ', 'x', '#' }, // 9
             { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' }, // 10
         };
-        
-        map[1,1] = '@';
-        
-        for (int i = 0; i < map.GetLength(0); i++)
+
+        int userX = 1, userY = 1;
+
+        while (true)
         {
-            for (int j = 0; j < map.GetLength(1); j++)
+            Console.SetCursorPosition(0, 0);
+            for (int i = 0; i < map.GetLength(0); i++)
             {
-                Console.Write(map[i, j]);
+                for (int j = 0; j < map.GetLength(1); j++)
+                {
+                    Console.Write(map[i, j]);
+                }
+
+                Console.WriteLine();
             }
-            Console.WriteLine();
+
+            Console.SetCursorPosition(userY, userX);
+            Console.Write('@');
+
+            ConsoleKeyInfo charKey = Console.ReadKey();
+            switch (charKey.Key)
+            {
+                case ConsoleKey.UpArrow:
+                    if (map[userX - 1, userY] != '#')
+                    {
+                        userX--;
+                    }
+                    break;
+                case ConsoleKey.DownArrow:
+                    if (map[userX + 1, userY] != '#')
+                    {
+                        userX++;
+                    }
+                    break;
+                case ConsoleKey.LeftArrow:
+                    if (map[userX, userY-1] != '#')
+                    {
+                        userY--;
+                    }
+                    break;
+                case ConsoleKey.RightArrow:
+                    if (map[userX, userY+1] != '#')
+                    {
+                        userY++;
+                    }
+                    break;
+            }
+            
+            Console.Clear();
         }
-        
-        // Console.SetCursorPosition(1, 1);
-        // Console.WriteLine('@');
     }
 }
