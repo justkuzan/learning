@@ -1,3 +1,37 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using System;
 
-Console.WriteLine("Hello, World!");
+class Program
+{
+    public static void Main(string[] args)
+    {
+        bool gameIsOn = true;
+        char[,] map =
+        {
+            // 1    2    3    4    5    6    7    8    9    10
+            { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' }, // 1
+            { '#', ' ', ' ', ' ', ' ', ' ', ' ', '#', ' ', '#' }, // 2
+            { '#', ' ', '#', 'x', ' ', ' ', ' ', '#', 'x', '#' }, // 3
+            { '#', ' ', '#', ' ', ' ', ' ', ' ', '#', ' ', '#' }, // 4
+            { '#', ' ', '#', '#', ' ', ' ', ' ', ' ', ' ', '#' }, // 5
+            { '#', 'x', ' ', ' ', ' ', ' ', ' ', ' ', 'x', '#' }, // 6
+            { '#', ' ', ' ', '#', ' ', ' ', '#', '#', ' ', '#' }, // 7
+            { '#', ' ', ' ', '#', '#', ' ', '#', ' ', ' ', '#' }, // 8
+            { '#', ' ', ' ', ' ', ' ', ' ', '#', ' ', 'x', '#' }, // 9
+            { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' }, // 10
+        };
+        
+        map[1,1] = '@';
+        
+        for (int i = 0; i < map.GetLength(0); i++)
+        {
+            for (int j = 0; j < map.GetLength(1); j++)
+            {
+                Console.Write(map[i, j]);
+            }
+            Console.WriteLine();
+        }
+        
+        // Console.SetCursorPosition(1, 1);
+        // Console.WriteLine('@');
+    }
+}
