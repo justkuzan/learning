@@ -19,21 +19,22 @@ namespace LearningDefaultSln
             
             Console.WriteLine("\nИндекс какого числа вы ищите?");
             int desiredNumber = int.Parse(Console.ReadLine());
+            IndexOf(array, desiredNumber);
 
+        }
+
+        static int IndexOf(int[] array, int desiredNumber)
+        {
             for (int i = 0; i < array.Length ; i++)
             {
                 if (array[i] == desiredNumber)
                 {
                     Console.WriteLine($"Индекс числа {desiredNumber}: {i}");
-                    break;
-                }
-                
-                if (desiredNumber != array[i] && i == array.Length-1)
-                {
-                    Console.WriteLine("Число не найдено");
-                    break;
+                    return i;
                 }
             }
+            Console.WriteLine("Число не найдено");
+            return -1;
         }
     }
 }
