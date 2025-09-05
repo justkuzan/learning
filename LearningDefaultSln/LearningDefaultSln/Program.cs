@@ -7,7 +7,7 @@ namespace LearningDefaultSln
         static void Main(string[] args)
         {
             Random randomArrayLength = new Random();
-            int[] array =  new int[randomArrayLength.Next(10, 50)];
+            int[] array =  new int[randomArrayLength.Next(10, 15)];
 
             Console.WriteLine("Массив: ");
 
@@ -28,13 +28,12 @@ namespace LearningDefaultSln
                     break;
                 }
                 
-                else if (desiredNumber != array[i])
+                if (desiredNumber != array[i] && i == array.Length-1)
                 {
                     Console.WriteLine("Число не найдено");
                     break;
                 }
             }
-            
         }
     }
 }
